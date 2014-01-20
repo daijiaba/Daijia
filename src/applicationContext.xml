@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+	">
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://211.149.189.210:3306/daijia"></property>
+		<property name="username" value="daijia_zh"></property>
+		<property name="password" value="zh6428"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>cn/daijia/vo/InfoOrder.hbm.xml</value>
+				<value>cn/daijia/vo/StatusDriver.hbm.xml</value>
+				<value>cn/daijia/vo/InfoAccount.hbm.xml</value>
+				<value>cn/daijia/vo/InfoAdministrator.hbm.xml</value>
+				<value>cn/daijia/vo/InfoWebsite.hbm.xml</value>
+				<value>cn/daijia/vo/InfoDriver.hbm.xml</value>
+				<value>cn/daijia/vo/InfoOrderPay.hbm.xml</value>
+				<value>cn/daijia/vo/ServiceEvaluation.hbm.xml</value>
+				<value>cn/daijia/vo/InfoLocation.hbm.xml</value>
+				<value>cn/daijia/vo/InfoCD.hbm.xml</value>
+				<value>cn/daijia/vo/InfoCustomer.hbm.xml</value>
+				<value>cn/daijia/vo/ServicePrice.hbm.xml</value></list>
+		</property>
+	</bean>
+	
+
+	<context:component-scan base-package="cn.daijia"/>
+	
+	<bean class="org.springframework.orm.hibernate3.HibernateTemplate" id="hibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+
+</beans>
