@@ -46,7 +46,6 @@
 				<value>cn/daijia/vo/ServicePrice.hbm.xml</value></list>
 		</property>
 	</bean>
-	
 
 	<context:component-scan base-package="cn.daijia"/>
 	
