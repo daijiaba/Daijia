@@ -1,0 +1,29 @@
+@Action
+public String [*1](){
+	[*2] [*3] = [**]Service.[*1]([*44]);
+	Map request = (Map) ActionContext.getContext().get("request");
+	request.put("[*3]", [*3]);
+	String hql = "from [*5]";
+	return SUCCESS;
+}
+
+@IService
+public [*2] [*1]([*4]);
+
+@Service
+public [*2] [*1]([*4]){
+	return [**]Dao.[*1]([*44]);
+}
+
+@IDao
+public [*2] [*1]([*4]);
+
+@Dao
+public [*2] [*1]([*4]){
+	Session session = getSession();
+	String hql = "from [*5]";
+	Query query = session.createQuery(hql);
+	List [*3] = query.list();
+	session.close();
+	return [*3];
+}

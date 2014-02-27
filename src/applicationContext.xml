@@ -13,9 +13,9 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver">
 		</property>
-		<property name="url" value="jdbc:mysql://211.149.189.210:3306/daijia"></property>
-		<property name="username" value="daijia_zh"></property>
-		<property name="password" value="zh6428"></property>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/daijia"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -51,6 +51,9 @@
 	
 	<bean class="org.springframework.orm.hibernate3.HibernateTemplate" id="hibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean class="cn.daijia.thread.ServerThread" init-method="start"  lazy-init="false">
 	</bean>
 
 </beans>

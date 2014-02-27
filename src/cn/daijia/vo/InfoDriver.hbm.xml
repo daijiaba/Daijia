@@ -95,5 +95,7 @@
                 <comment>密码找回答案</comment>
             </column>
         </property>
+        
+        <one-to-one name="statusDriver" class="cn.daijia.vo.StatusDriver"></one-to-one>
     </class>
 </hibernate-mapping>

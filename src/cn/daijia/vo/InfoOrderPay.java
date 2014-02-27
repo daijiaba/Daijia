@@ -9,6 +9,7 @@ public class InfoOrderPay implements java.io.Serializable {
 	// Fields
 
 	private Integer ordernumber;
+	private InfoOrder infoOrder;
 	private Double payamount;
 	private String advancepaytime;
 	private String confirmpaytime;
@@ -19,9 +20,15 @@ public class InfoOrderPay implements java.io.Serializable {
 	public InfoOrderPay() {
 	}
 
+	/** minimal constructor */
+	public InfoOrderPay(InfoOrder infoOrder) {
+		this.infoOrder = infoOrder;
+	}
+
 	/** full constructor */
-	public InfoOrderPay(Double payamount, String advancepaytime,
-			String confirmpaytime) {
+	public InfoOrderPay(InfoOrder infoOrder, Double payamount,
+			String advancepaytime, String confirmpaytime) {
+		this.infoOrder = infoOrder;
 		this.payamount = payamount;
 		this.advancepaytime = advancepaytime;
 		this.confirmpaytime = confirmpaytime;
@@ -35,6 +42,14 @@ public class InfoOrderPay implements java.io.Serializable {
 
 	public void setOrdernumber(Integer ordernumber) {
 		this.ordernumber = ordernumber;
+	}
+
+	public InfoOrder getInfoOrder() {
+		return this.infoOrder;
+	}
+
+	public void setInfoOrder(InfoOrder infoOrder) {
+		this.infoOrder = infoOrder;
 	}
 
 	public Double getPayamount() {

@@ -35,7 +35,7 @@ public abstract class BaseDao extends DaoSupport {
 	protected final Session getSession()
 		throws DataAccessResourceFailureException, IllegalStateException {
 
-		Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.openSession();
 		return session;
 	}
 

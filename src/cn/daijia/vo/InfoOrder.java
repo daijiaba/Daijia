@@ -20,6 +20,7 @@ public class InfoOrder implements java.io.Serializable {
 	private String endlocation;
 	private Short status;
 	private String processtime;
+	private InfoOrderPay infoOrderPay;
 
 	// Constructors
 
@@ -40,7 +41,7 @@ public class InfoOrder implements java.io.Serializable {
 	public InfoOrder(Integer CUsernumber, Integer DUsernumber, String CUsertel,
 			String DUsertel, String ordertime, String begintime,
 			String endtime, String beginlocation, String endlocation,
-			Short status, String processtime) {
+			Short status, String processtime, InfoOrderPay infoOrderPay) {
 		this.CUsernumber = CUsernumber;
 		this.DUsernumber = DUsernumber;
 		this.CUsertel = CUsertel;
@@ -52,6 +53,7 @@ public class InfoOrder implements java.io.Serializable {
 		this.endlocation = endlocation;
 		this.status = status;
 		this.processtime = processtime;
+		this.infoOrderPay = infoOrderPay;
 	}
 
 	// Property accessors
@@ -150,6 +152,14 @@ public class InfoOrder implements java.io.Serializable {
 
 	public void setProcesstime(String processtime) {
 		this.processtime = processtime;
+	}
+
+	public InfoOrderPay getInfoOrderPay() {
+		return this.infoOrderPay;
+	}
+
+	public void setInfoOrderPay(InfoOrderPay infoOrderPay) {
+		this.infoOrderPay = infoOrderPay;
 	}
 
 }

@@ -4,10 +4,17 @@
 <html lang="en">
 <head>
 </head>
+<%String servletPath=request.getServletPath(); %>
   <body>
-  <form method="post" action="saveInfoCustomer.action">
+  <script type="text/javascript">
+		if("${tips}"=="false"){
+			alert("积分不足");
+		}
+  </script>
+  <form method="post" action="saveInfoCustomer">
   	<input type="text" name="infoCustomer.usertel"/>
   	<input type="text" name="infoCustomer.passwd"/>
+  	<input type="text" name="path" value="<%=servletPath%>"/>
   	<input type="submit"/>
   </form>
   </body>

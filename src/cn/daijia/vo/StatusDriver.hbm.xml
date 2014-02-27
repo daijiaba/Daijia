@@ -8,7 +8,9 @@
     <class name="cn.daijia.vo.StatusDriver" table="status_driver" catalog="daijia">
         <id name="usernumber" type="java.lang.Integer">
             <column name="usernumber" />
-            <generator class="identity" />
+            <generator class="foreign">
+            	<param name="property">infoDriver</param>
+            </generator>
         </id>
         <property name="busyornot" type="java.lang.Boolean">
             <column name="busyornot" not-null="true">
@@ -25,5 +27,17 @@
                 <comment>当前所在位置</comment>
             </column>
         </property>
+        <property name="lng" type="java.lang.Double">
+            <column name="lng" precision="22" scale="0" not-null="true">
+                <comment>位置-经度</comment>
+            </column>
+        </property>
+        <property name="lat" type="java.lang.Double">
+            <column name="lat" precision="22" scale="0" not-null="true">
+                <comment>位置-纬度</comment>
+            </column>
+        </property>
+        
+        <one-to-one name="infoDriver" class="cn.daijia.vo.InfoDriver"></one-to-one>
     </class>
 </hibernate-mapping>

@@ -10,8 +10,21 @@
 	<package name="default" extends="struts-default">
 	
 		<action name="saveInfoCustomer" class="testAction" method="saveInfoCustomer">
-			<result name="success">/index.jsp</result>
+			<result name="success" type="chain">saveInfoCustomer</result>
+
+			<result name="false">${path}</result>
 		</action>
 		
 	</package>
+	
+	
+	<package name="ajax" extends="json-default">
+		
+		<action name="searchDriver" class="orderAction" method="getDriverStatus">
+			<result name="success" type="json"></result>
+		</action>
+		
+	</package>
+	
+	
 </struts>

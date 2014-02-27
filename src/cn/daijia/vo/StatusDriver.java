@@ -12,6 +12,9 @@ public class StatusDriver implements java.io.Serializable {
 	private Boolean busyornot;
 	private Boolean status;
 	private String location;
+	private Double lng;
+	private Double lat;
+	private InfoDriver infoDriver;
 
 	// Constructors
 
@@ -20,10 +23,13 @@ public class StatusDriver implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public StatusDriver(Boolean busyornot, Boolean status, String location) {
+	public StatusDriver(Boolean busyornot, Boolean status, String location,
+			Double lng, Double lat) {
 		this.busyornot = busyornot;
 		this.status = status;
 		this.location = location;
+		this.lng = lng;
+		this.lat = lat;
 	}
 
 	// Property accessors
@@ -58,6 +64,30 @@ public class StatusDriver implements java.io.Serializable {
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public Double getLng() {
+		return this.lng;
+	}
+
+	public void setLng(Double lng) {
+		this.lng = lng;
+	}
+
+	public Double getLat() {
+		return this.lat;
+	}
+
+	public void setLat(Double lat) {
+		this.lat = lat;
+	}
+	
+	public InfoDriver getInfoDriver() {
+		return infoDriver;
+	}
+
+	public void setInfoDriver(InfoDriver infoDriver) {
+		this.infoDriver = infoDriver;
 	}
 
 }

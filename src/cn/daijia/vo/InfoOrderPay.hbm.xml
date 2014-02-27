@@ -10,6 +10,7 @@
             <column name="ordernumber" />
             <generator class="identity" />
         </id>
+        <one-to-one name="infoOrder" class="cn.daijia.vo.InfoOrder" constrained="true"></one-to-one>
         <property name="payamount" type="java.lang.Double">
             <column name="payamount" precision="22" scale="0">
                 <comment>支付金额</comment>

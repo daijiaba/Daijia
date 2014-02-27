@@ -65,5 +65,6 @@
                 <comment>订单处理时间</comment>
             </column>
         </property>
+        <one-to-one name="infoOrderPay" class="cn.daijia.vo.InfoOrderPay"></one-to-one>
     </class>
 </hibernate-mapping>
