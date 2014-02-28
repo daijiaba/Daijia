@@ -9,8 +9,6 @@ public class Test {
 		System.out.println(para.substring(0, para.length()));
 		System.out.println(para.split("[\\s]+")[1]);
 		byte b = 'z';
-		String sss = ;
-		System.out.println(sss);
 	}
 
 }
