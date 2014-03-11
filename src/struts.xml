@@ -5,14 +5,21 @@
 <struts> 
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<constant name="struts.configuration.xml.reload" value="true" />
-	<constant name="struts.devMode" value="false" />
+	<constant name="struts.devMode" value="true" />
 	
 	<package name="default" extends="struts-default">
 	
 		<action name="saveInfoCustomer" class="testAction" method="saveInfoCustomer">
 			<result name="success" type="chain">saveInfoCustomer</result>
-
 			<result name="false">${path}</result>
+		</action>
+		
+		<action name="order">
+			<result>order.jsp</result>
+		</action>
+	
+		<action name="order_*" method="{1}" class="orderAction">
+			<result name="pay">order_pay.jsp</result>
 		</action>
 		
 	</package>

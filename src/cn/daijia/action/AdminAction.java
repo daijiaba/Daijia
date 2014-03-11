@@ -26,4 +26,11 @@ public class AdminAction {
 		String hql = "from HssfsdfKsdfsd hk";
 		return SUCCESS;
 	}
+
+	public String getInfoDriver(){
+		List infoDriver = DriverService.getInfoDriver();
+		Map request = (Map) ActionContext.getContext().get("request");
+		request.put("infoDriver", infoDriver);
+		return SUCCESS;
+	}
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class OrderDao extends BaseDao implements IOrderDao{
 	public List getDriverStatus(){
 		Session session = getSession();
-		String hql = "from StatusDriver sd";
+		String hql = "from StatusDriver sd where sd.busyornot=0 and sd.status=1";
 		Query query = session.createQuery(hql);
 		List users = query.list();
 		session.close();

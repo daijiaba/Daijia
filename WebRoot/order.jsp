@@ -139,16 +139,24 @@ body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
 <div id="fram">		
 <div id="l-map" style="position:absolute;"></div>
 <div id="r-result">
-<form action="searchDriver" method="post" id="form1" name="form1">
+<form action="order_pay" method="post" id="form2" name="form2">
 	<input type="text" id="city" size="10"  style="width:50px;margin:100px 0 0 30px;font-size:15px;position:absolute;"/>
-	<input type="text" id="suggestId" size="30"  style="width:150px;margin:100px 0 0 100px;font-size:15px;position:absolute;" onchange="clearTarget('start');"/>
+	<input type="text" id="suggestId" name="startPlace" size="30"  style="width:150px;margin:100px 0 0 100px;font-size:15px;position:absolute;" onchange="clearTarget('start');"/>
 	<input type="text" value="↔" onclick="exchange();" style="cursor:pointer;width:17px;margin:100px 0 0 270px;font-size:15px;position:absolute;"/>
-	<input type="text" id="suggestId1" size="30"  style="width:150px;margin:100px 0 0 307px;font-size:15px;position:absolute;" onchange="clearTarget('end');" />
+	<input type="text" id="suggestId1" name="endPlace" size="30"  style="width:150px;margin:100px 0 0 307px;font-size:15px;position:absolute;" onchange="clearTarget('end');" />
 	<input type="text" value="找代驾" onclick="callAjax();" style="cursor:pointer;width:45px;margin:100px 0 0 478px;font-size:15px;position:absolute;"/>
+	<input type="text" value="车型" id="autotype" name="autotype" style="cursor:pointer;width:150px;margin:150px 0 0 30px;font-size:15px;position:absolute;"/>
 	<input type="text" id="start" name="start"/>
 	<input type="text" id="end" name="end"/>
 	<input type="button" onclick="handle();"/>
+	
+	<input type="hidden" id="selength" name="selength"/>
+	<input type="hidden" id="guMoney" name="guMoney"/>
+	<input type="hidden" id="qiMoney" name="qiMoney"/>
 </form>
+
+
+
 </div>
 <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:250px;height:auto;">
 </div>
@@ -186,11 +194,33 @@ function callAjax(){
     var obj = $.parseJSON(json);  //使用这个方法解析json
     var data = obj;  //result是和action中定义的result变量的get方法对应的
     alert(json);
-    G("result-list").innerHTML = "<br><br><strong>" + data.username + "</strong>" + "<br>距离您" +
-    data.length + "千米<br>驾龄：" + data.drivingage + "年<br>已服务:" + data.servicetimes + "次<br>" + 
-    "联系电话：" + data.usertel;
+    var username = data.username.split('|');
+    var length = data.length.split('|');
+    var drivingage = data.drivingage.split('|');
+    var servicetimes = data.servicetimes.split('|');
+    var usertel = data.usertel.split('|');
+    alert(username[0]);
+    for(i=0;i<2;i++){
+    	G("result-list").innerHTML += "<br><strong>" + username[i] + "</strong>" + "<br>距离您" +
+    length[i] + "千米<br>驾龄：" + drivingage[i] + "年<br>已服务:" + servicetimes[i] + "次<br>" + 
+    "联系电话：" + usertel[i] + "<br>";
+    }
+    
+    G("result-list").innerHTML += "<br><strong>预计距离 " + data.selength + "千米</strong>";
+    G("result-list").innerHTML += "<br><strong>预计需 RMB " + data.guMoney + "</strong>";
+    G("result-list").innerHTML += "<br><strong>需预支付 RMB " + data.qiMoney + "</strong><br>";
+    
+    G("result-list").innerHTML += "<br><input type='button' onclick='pay();' value='付款'/>";
+    	
+    G("selength").value = data.selength;
+    G("guMoney").value = data.guMoney;
+    G("qiMoney").value = data.qiMoney;
     }
     });
+}
+
+function pay(){
+	document.form2.submit();
 }
 
 function exchange(){

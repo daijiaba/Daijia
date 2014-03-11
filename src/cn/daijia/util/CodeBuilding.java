@@ -74,7 +74,7 @@ public class CodeBuilding {
 		System.out.println("return data:  (Like 'int i'!)");
 		String rtnType = scan.next().trim();
 		String rtnName = scan.next().trim();
-		System.out.println("PARA:  (Like 'id, name')");
+		System.out.println("PARA:  (Like 'int id, String name')");
 		scan.nextLine();
 		String para = scan.nextLine().trim();
 //		String purepara = para.trim().replaceAll("[a-zA-Z]*\\s", "");
@@ -138,6 +138,9 @@ public class CodeBuilding {
 			File tmp = new File(f1.getCanonicalPath() + "/WebRoot/template/template.dat");
 			rt = new BufferedReader(new FileReader(tmp));
 			s = rt.readLine().trim();
+			while(s != null && s.equals("")){
+				s = rt.readLine().trim();
+			}
 			boolean haveWrite = false;
 			
 			while(s != null){
@@ -148,7 +151,10 @@ public class CodeBuilding {
 					else if(s.startsWith("@Service")) ctype = "Service";
 					else if(s.startsWith("@IDao")) ctype = "IDao";
 					else if(s.startsWith("@Dao")) ctype = "Dao";
-					else break;
+					else {
+						System.out.println("@参数错误");
+						break;
+					}
 					s = rt.readLine();
 					r = getAccessFile(ctype, main);
 					if(r == null) break;
@@ -222,8 +228,9 @@ public class CodeBuilding {
 		else return null;
 		try{
 			File f1 = new File("");
-			File f = new File(f1.getCanonicalPath() + "/src/cn/daijia/" + ctype);
+			File f = new File(f1.getCanonicalPath() + "/src/cn/daijia/" + ctype + ".java");
 			RandomAccessFile r = new RandomAccessFile(f,"rw");
+			System.out.println(ctype);
 			r.seek(f.length() - 3);
 			r.writeBytes(separator + separator);
 			return r;
