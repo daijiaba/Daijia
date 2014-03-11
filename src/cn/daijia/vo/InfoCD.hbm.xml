@@ -6,10 +6,15 @@
 -->
 <hibernate-mapping>
     <class name="cn.daijia.vo.InfoCD" table="info_c_d" catalog="daijia">
-        <id name="usernumber" type="java.lang.Integer">
-            <column name="usernumber" />
-            <generator class="identity" />
+        <id name="tradeid" type="java.lang.Integer">
+            <column name="tradeid" />
+            <generator class="native" />
         </id>
+        <property name="usernumber" type="java.lang.Integer">
+            <column name="usernumber" not-null="true">
+                <comment>用户编号</comment>
+            </column>
+        </property>
         <property name="status" type="java.lang.Short">
             <column name="status" not-null="true">
                 <comment>收/支方式</comment>
@@ -40,5 +45,7 @@
                 <comment>备注</comment>
             </column>
         </property>
+       <many-to-one name="infoOrder" column="ordernumber" class="cn.daijia.vo.InfoOrder" 
+               insert="false" update="false" outer-join="true" lazy="false"/>
     </class>
 </hibernate-mapping>

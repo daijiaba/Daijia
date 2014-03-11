@@ -8,7 +8,7 @@
     <class name="cn.daijia.vo.ServiceEvaluation" table="service_evaluation" catalog="daijia">
         <id name="ordernumber" type="java.lang.Integer">
             <column name="ordernumber" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         <property name="status" type="java.lang.Short">
             <column name="status" not-null="true">
@@ -23,6 +23,11 @@
         <property name="information" type="java.lang.String">
             <column name="information">
                 <comment>服务评价信息</comment>
+            </column>
+        </property>
+        <property name="evaluationtime" type="java.lang.String">
+            <column name="evaluationtime" length="45">
+                <comment>评价时间</comment>
             </column>
         </property>
     </class>

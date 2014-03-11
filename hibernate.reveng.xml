@@ -3,10 +3,4 @@
 
 <hibernate-reverse-engineering>
 
-<table name="info_order" catalog="daijia">
-	<primary-key>
-
-		<key-column name="ordernumber" />
-	</primary-key>
-</table>
 </hibernate-reverse-engineering>

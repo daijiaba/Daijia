@@ -12,6 +12,9 @@ public class InfoAccount implements java.io.Serializable {
 	private String passwd;
 	private String passwdfind;
 	private String passwdanswer;
+	private String setpasswdtime;
+	private String lasttime;
+	private Short frozen;
 
 	// Constructors
 
@@ -25,10 +28,14 @@ public class InfoAccount implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public InfoAccount(String passwd, String passwdfind, String passwdanswer) {
+	public InfoAccount(String passwd, String passwdfind, String passwdanswer,
+			String setpasswdtime, String lasttime, Short frozen) {
 		this.passwd = passwd;
 		this.passwdfind = passwdfind;
 		this.passwdanswer = passwdanswer;
+		this.setpasswdtime = setpasswdtime;
+		this.lasttime = lasttime;
+		this.frozen = frozen;
 	}
 
 	// Property accessors
@@ -63,6 +70,30 @@ public class InfoAccount implements java.io.Serializable {
 
 	public void setPasswdanswer(String passwdanswer) {
 		this.passwdanswer = passwdanswer;
+	}
+
+	public String getSetpasswdtime() {
+		return this.setpasswdtime;
+	}
+
+	public void setSetpasswdtime(String setpasswdtime) {
+		this.setpasswdtime = setpasswdtime;
+	}
+
+	public String getLasttime() {
+		return this.lasttime;
+	}
+
+	public void setLasttime(String lasttime) {
+		this.lasttime = lasttime;
+	}
+
+	public Short getFrozen() {
+		return this.frozen;
+	}
+
+	public void setFrozen(Short frozen) {
+		this.frozen = frozen;
 	}
 
 }

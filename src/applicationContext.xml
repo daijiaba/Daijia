@@ -13,9 +13,9 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver">
 		</property>
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/daijia"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/daijia"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value=""></property>
+		<property name="password" value="1361672793"></property>
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -46,14 +46,99 @@
 				<value>cn/daijia/vo/ServicePrice.hbm.xml</value></list>
 		</property>
 	</bean>
-
-	<context:component-scan base-package="cn.daijia"/>
 	
-	<bean class="org.springframework.orm.hibernate3.HibernateTemplate" id="hibernateTemplate">
-		<property name="sessionFactory" ref="sessionFactory"/>
+
+	<context:component-scan base-package="com.daijia"/>
+	
+	<bean id="baseDao" class="cn.daijia.dao.BaseDao" abstract="true">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
 	</bean>
 	
-	<bean class="cn.daijia.thread.ServerThread" init-method="start"  lazy-init="false">
+	<bean id="testDao" class="cn.daijia.dao.TestDao" parent="baseDao">
+	</bean>	
+	<bean id="testService" class="cn.daijia.service.TestService">
+		<property name="testDao">
+			<ref bean="testDao"/>
+		</property>
 	</bean>
-
+	<bean id="testAction" class="cn.daijia.action.TestAction">
+		<property name="testService">
+			<ref bean="testService"/>
+		</property>
+	</bean>
+	
+	<bean id="infoCustomerDAO" class="cn.daijia.dao.InfoCustomerDAO" parent="baseDao">
+	</bean>	
+	<bean id="infoCustomerService" class="cn.daijia.service.InfoCustomerService">
+		<property name="infoCustomerDAO">
+			<ref bean="infoCustomerDAO"/>
+		</property>
+	</bean>
+	<bean id="infoCustomerAction" class="cn.daijia.action.InfoCustomerAction">
+		<property name="infoCustomerService">
+			<ref bean="infoCustomerService"/>
+		</property>
+	</bean>
+	
+	<bean id="infoCDDAO" class="cn.daijia.dao.InfoCDDAO" parent="baseDao">
+	</bean>	
+	<bean id="infoCDService" class="cn.daijia.service.InfoCDService">
+		<property name="infoCDDAO">
+			<ref bean="infoCDDAO"/>
+		</property>
+	</bean>
+	<bean id="infoCDAction" class="cn.daijia.action.InfoCDAction">
+		<property name="infoCDService">
+			<ref bean="infoCDService"/>
+		</property>
+		<property name="infoCustomerService">
+			<ref bean="infoCustomerService"/>
+		</property>
+	</bean>
+	
+	<bean id="infoOrderDAO" class="cn.daijia.dao.InfoOrderDAO" parent="baseDao">
+	</bean>	
+	<bean id="infoOrderService" class="cn.daijia.service.InfoOrderService">
+		<property name="infoOrderDAO">
+			<ref bean="infoOrderDAO"/>
+		</property>
+	</bean>
+	<bean id="infoOrderAction" class="cn.daijia.action.InfoOrderAction">
+		<property name="infoOrderService">
+			<ref bean="infoOrderService"/>
+		</property>
+	</bean>
+	
+	<bean id="servEvaluationDAO" class="cn.daijia.dao.ServEvaluationDAO" parent="baseDao">
+	</bean>	
+	<bean id="servEvaluationService" class="cn.daijia.service.ServEvaluationService">
+		<property name="servEvaluationDAO">
+			<ref bean="servEvaluationDAO"/>
+		</property>
+	</bean>
+	<bean id="servEvaluationAction" class="cn.daijia.action.ServEvaluationAction">
+		<property name="servEvaluationService">
+			<ref bean="servEvaluationService"/>
+		</property>
+	</bean>
+	
+	<bean id="infoAccountDAO" class="cn.daijia.dao.InfoAccountDAO" parent="baseDao">
+	</bean>	
+	<bean id="infoAccountService" class="cn.daijia.service.InfoAccountService">
+		<property name="infoAccountDAO">
+			<ref bean="infoAccountDAO"/>
+		</property>
+	</bean>
+	<bean id="infoAccountAction" class="cn.daijia.action.InfoAccountAction">
+		<property name="infoAccountService">
+			<ref bean="infoAccountService"/>
+		</property>
+		<property name="infoCustomerService">
+			<ref bean="infoCustomerService"/>
+		</property>
+	</bean>
+	
+	
 </beans>

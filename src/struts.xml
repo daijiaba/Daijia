@@ -5,26 +5,84 @@
 <struts> 
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<constant name="struts.configuration.xml.reload" value="true" />
-	<constant name="struts.devMode" value="false" />
+	<constant name="struts.devMode" value="true" />
+	 <include file="struts-default.xml" />
 	
 	<package name="default" extends="struts-default">
 	
-		<action name="saveInfoCustomer" class="testAction" method="saveInfoCustomer">
-			<result name="success" type="chain">saveInfoCustomer</result>
+		<action name="login" class="infoCustomerAction" method="validateUser">
+			<result name="success">/prepaidfirst.jsp</result>
+		</action>
+		<action name="saveCD" class="infoCDAction" method="saveInfoCD">
+			<result name="success">/prepaidfirst.jsp</result>
+		</action>
+		<action name="search" class="infoCDAction" method="searchCD">
+			<result name="success">/prepaid.jsp</result>
+		</action>
+		<action name="searchorder" class="infoOrderAction" method="searchOrder">
+			<result name="success">/searchorderresult.jsp</result>
+		</action>
+		<action name="searchallorder" class="infoOrderAction" method="allOrder">
+			<result name="success">/searchorder.jsp</result>
+		</action>
+		<action name="saveSEva" class="servEvaluationAction" method="saveServEva">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="getSEva" class="servEvaluationAction" method="getServEva">
+			<result name="success">/evaluation.jsp</result>
+		</action>
+		<action name="getSEva1" class="servEvaluationAction" method="getServEva">
+			<result name="success">/editevaluation.jsp</result>
+		</action>
+		<action name="getAllEva" class="servEvaluationAction" method="getAllEvas">
+			<result name="success">/searchEvaluationResult.jsp</result>
+		</action>
+		<action name="searchEva" class="servEvaluationAction" method="searchServEva">
+			<result name="success">/showsearchEvaluation.jsp</result>
+		</action>
+		<action name="getAllCD" class="infoCDAction" method="getAllCD">
+			<result name="success">/searchTradeRecord.jsp</result>
+		</action>
+		<action name="hqlCD" class="infoCDAction" method="searchCDByHql">
+			<result name="success">/searchTradeRecordResult.jsp</result>
+		</action>
+		<action name="getAccount" class="infoAccountAction" method="getAccount">
+			<result name="success">/account.jsp</result>
+			<result name="error">/account.jsp</result>
+		</action>
+		<action name="saveTime" class="infoAccountAction" method="saveTime">
+			<result name="success">/account.jsp</result>
+		</action>
+		<action name="editPasswd" class="infoAccountAction" method="editPasswd">
+			<result name="success">/editPasswdsuccess.jsp</result>
+		</action>
+		<action name="editQuestion" class="infoAccountAction" method="editQuestion">
+			<result name="success">/editPasswdsuccess.jsp</result>
+		</action>
+		<action name="saveAccount" class="infoAccountAction" method="saveAccount">
+			<result name="success">/accountfirst.jsp</result>
+		</action>
+		<action name="accountCD" class="infoCDAction" method="searchCDForAccount">
+			<result name="success">/accountsearchresult.jsp</result>
+		</action>
+		<action name="trans" class="infoCDAction" method="accountTransfer">
+			<result name="success">/accountfirst.jsp</result>
+			<result name="error">/accounttranserror.jsp</result>
+		</action>
+		<action name="find" class="infoAccountAction" method="passwdFind">
+			<result name="success">/editPasswdsuccess.jsp</result>
+			<result name="error">/editpasswderror.jsp</result>
+		</action>
+		<action name="findEmail" class="infoAccountAction" method="findEmail">
+			<result name="success">/accountpasswdfindbyquestion.jsp</result>
+			<result name="error">/editpasswderror.jsp</result>
+		</action>
+		<action name="findbyQ" class="infoAccountAction" method="passwdFindByQuestion">
+			<result name="success">/editPasswdsuccess.jsp</result>
+			<result name="error">/editpasswderror.jsp</result>
+		</action>
+		
 
-			<result name="false">${path}</result>
-		</action>
 		
 	</package>
-	
-	
-	<package name="ajax" extends="json-default">
-		
-		<action name="searchDriver" class="orderAction" method="getDriverStatus">
-			<result name="success" type="json"></result>
-		</action>
-		
-	</package>
-	
-	
 </struts>

@@ -12,6 +12,7 @@ public class ServiceEvaluation implements java.io.Serializable {
 	private Short status;
 	private String score;
 	private String information;
+	private String evaluationtime;
 
 	// Constructors
 
@@ -25,10 +26,12 @@ public class ServiceEvaluation implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public ServiceEvaluation(Short status, String score, String information) {
+	public ServiceEvaluation(Short status, String score, String information,
+			String evaluationtime) {
 		this.status = status;
 		this.score = score;
 		this.information = information;
+		this.evaluationtime = evaluationtime;
 	}
 
 	// Property accessors
@@ -63,6 +66,14 @@ public class ServiceEvaluation implements java.io.Serializable {
 
 	public void setInformation(String information) {
 		this.information = information;
+	}
+
+	public String getEvaluationtime() {
+		return this.evaluationtime;
+	}
+
+	public void setEvaluationtime(String evaluationtime) {
+		this.evaluationtime = evaluationtime;
 	}
 
 }

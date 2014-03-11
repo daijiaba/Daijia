@@ -8,7 +8,7 @@
     <class name="cn.daijia.vo.InfoAccount" table="info_account" catalog="daijia">
         <id name="usernumber" type="java.lang.Integer">
             <column name="usernumber" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         <property name="passwd" type="java.lang.String">
             <column name="passwd" length="32" not-null="true">
@@ -23,6 +23,21 @@
         <property name="passwdanswer" type="java.lang.String">
             <column name="passwdanswer">
                 <comment>密码找回答案</comment>
+            </column>
+        </property>
+        <property name="setpasswdtime" type="java.lang.String">
+            <column name="setpasswdtime" length="45">
+                <comment>设置密码时间</comment>
+            </column>
+        </property>
+        <property name="lasttime" type="java.lang.String">
+            <column name="lasttime" length="45">
+                <comment>上一次登录时间</comment>
+            </column>
+        </property>
+        <property name="frozen" type="java.lang.Short">
+            <column name="frozen">
+                <comment>冻结账户</comment>
             </column>
         </property>
     </class>

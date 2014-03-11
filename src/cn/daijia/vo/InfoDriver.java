@@ -26,7 +26,6 @@ public class InfoDriver implements java.io.Serializable {
 	private String servicegrade;
 	private String passwdfind;
 	private String passwdanswer;
-	private StatusDriver statusDriver;
 
 	// Constructors
 
@@ -219,14 +218,6 @@ public class InfoDriver implements java.io.Serializable {
 
 	public void setPasswdanswer(String passwdanswer) {
 		this.passwdanswer = passwdanswer;
-	}
-	
-	public StatusDriver getStatusDriver() {
-		return statusDriver;
-	}
-
-	public void setStatusDriver(StatusDriver statusDriver) {
-		this.statusDriver = statusDriver;
 	}
 
 }

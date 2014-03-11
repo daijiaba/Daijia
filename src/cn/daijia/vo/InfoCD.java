@@ -8,6 +8,7 @@ public class InfoCD implements java.io.Serializable {
 
 	// Fields
 
+	private Integer tradeid;
 	private Integer usernumber;
 	private Short status;
 	private Double payamount;
@@ -15,6 +16,7 @@ public class InfoCD implements java.io.Serializable {
 	private Double accountbalance;
 	private Integer ordernumber;
 	private String remark;
+	private InfoOrder infoOrder;
 
 	// Constructors
 
@@ -23,13 +25,16 @@ public class InfoCD implements java.io.Serializable {
 	}
 
 	/** minimal constructor */
-	public InfoCD(Short status) {
+	public InfoCD(Integer usernumber, Short status) {
+		this.usernumber = usernumber;
 		this.status = status;
 	}
 
 	/** full constructor */
-	public InfoCD(Short status, Double payamount, String paytime,
-			Double accountbalance, Integer ordernumber, String remark) {
+	public InfoCD(Integer usernumber, Short status, Double payamount,
+			String paytime, Double accountbalance, Integer ordernumber,
+			String remark) {
+		this.usernumber = usernumber;
 		this.status = status;
 		this.payamount = payamount;
 		this.paytime = paytime;
@@ -39,6 +44,14 @@ public class InfoCD implements java.io.Serializable {
 	}
 
 	// Property accessors
+
+	public Integer getTradeid() {
+		return this.tradeid;
+	}
+
+	public void setTradeid(Integer tradeid) {
+		this.tradeid = tradeid;
+	}
 
 	public Integer getUsernumber() {
 		return this.usernumber;
@@ -95,5 +108,14 @@ public class InfoCD implements java.io.Serializable {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+	public InfoOrder getInfoOrder() {
+		return infoOrder;
+	}
+
+	public void setInfoOrder(InfoOrder infoOrder) {
+		this.infoOrder = infoOrder;
+	}
+	
 
 }

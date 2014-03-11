@@ -1,5 +1,7 @@
 package cn.daijia.vo;
 
+import java.util.Set;
+
 /**
  * InfoOrder entity. @author MyEclipse Persistence Tools
  */
@@ -41,7 +43,7 @@ public class InfoOrder implements java.io.Serializable {
 	public InfoOrder(Integer CUsernumber, Integer DUsernumber, String CUsertel,
 			String DUsertel, String ordertime, String begintime,
 			String endtime, String beginlocation, String endlocation,
-			Short status, String processtime, InfoOrderPay infoOrderPay) {
+			Short status, String processtime) {
 		this.CUsernumber = CUsernumber;
 		this.DUsernumber = DUsernumber;
 		this.CUsertel = CUsertel;
@@ -53,7 +55,6 @@ public class InfoOrder implements java.io.Serializable {
 		this.endlocation = endlocation;
 		this.status = status;
 		this.processtime = processtime;
-		this.infoOrderPay = infoOrderPay;
 	}
 
 	// Property accessors
@@ -155,11 +156,13 @@ public class InfoOrder implements java.io.Serializable {
 	}
 
 	public InfoOrderPay getInfoOrderPay() {
-		return this.infoOrderPay;
+		return infoOrderPay;
 	}
 
 	public void setInfoOrderPay(InfoOrderPay infoOrderPay) {
 		this.infoOrderPay = infoOrderPay;
 	}
+    
+	
 
 }
